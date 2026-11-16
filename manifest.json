@@ -1,7 +1,7 @@
 {
   "id": "/print-queue/",
-  "name": "Print Queue",
-  "short_name": "PrintQueue",
+  "name": "Need For Print",
+  "short_name": "Need4Print",
   "description": "Lista personale di modelli 3D da stampare",
   "start_url": "./index.html",
   "scope": "./",

@@ -1,4 +1,4 @@
-const CACHE = 'print-queue-v13';
+const CACHE = 'print-queue-v14';
 const ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const ASSETS = [
   './js/theme.js',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './icons/apple-touch-icon.png',
   './icons/sources/printables.png',
   './icons/sources/thingiverse.png',
   './icons/sources/makerworld.png',
