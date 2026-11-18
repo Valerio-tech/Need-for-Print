@@ -2,14 +2,14 @@
   "id": "/print-queue/",
   "name": "Need For Print",
   "short_name": "Need4Print",
-  "description": "Lista personale di modelli 3D da stampare",
+  "description": "Personal queue of 3D models to print",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0f1419",
   "theme_color": "#1a73e8",
   "orientation": "portrait",
-  "lang": "it",
+  "lang": "en",
   "icons": [
     {
       "src": "icons/icon-192.png",

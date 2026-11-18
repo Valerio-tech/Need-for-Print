@@ -1,60 +1,61 @@
 # Need For Print
 
-App personale per salvare e organizzare modelli 3D da stampare. Pensata per **Android** come PWA (Progressive Web App).
+Personal app to save and organize 3D models you want to print. Built for **Android** as a PWA (Progressive Web App).
 
-## Funzionalità
+## Features
 
-- Incolla un link da **Printables**, **Thingiverse**, **MakerWorld**, **Thangs**, **Creality Cloud**, **Cults3D**, **MyMiniFactory**, **Yeggi** o **Sketchfab**
-- Assegna un **titolo** personalizzato a ogni modello
-- Scegli un **colore** per ogni progetto (bordo colorato sulla card)
-- **Tema chiaro / scuro** con switch in header (preferenza salvata sul dispositivo)
-- Logo della piattaforma di provenienza su ogni card (Printables, MakerWorld, ecc.)
-- Condivisione rapida del link del modello da ogni scheda
-- **Ricevi link** da altre app (Condividi → Need For Print): apre «Nuovo modello» con URL già compilato (PWA installata su Android)
-- Tag personalizzati con suggerimenti dai tag già usati
-- Segna come **stampato** o **da stampare**
-- Filtri per stato, tag e **famiglia colore** (AND), ricerca testuale
-- Dati salvati sul dispositivo (localStorage)
-- Backup esportabile/importabile in JSON
-- Funziona offline dopo il primo caricamento
+- Paste a link from **Printables**, **Thingiverse**, **MakerWorld**, **Thangs**, **Creality Cloud**, **Cults3D**, **MyMiniFactory**, **Yeggi**, or **Sketchfab**
+- Set a custom **title** for each model
+- Pick a **color** per project (colored border on each card)
+- **Light / dark theme** with a header switch (preference saved on device)
+- Source platform logo on each card
+- Quick share from every card
+- **Receive links** from other apps (Share → Need For Print): opens “New model” with the URL prefilled (installed PWA on Android)
+- Custom tags with suggestions from tags you already use
+- Mark **printed** or **to print**
+- Filters by status, tag, and **color family** (AND), plus text search
+- Data stored on device (localStorage)
+- Export/import backup as JSON
+- Works offline after the first load
+- **noindex**: not intended for search engine indexing (`robots.txt` + meta robots)
 
-## Installazione su Android
+## Install on Android
 
-### Opzione A — GitHub Pages (consigliata)
+### Option A — GitHub Pages (recommended)
 
-1. Vai su **Settings → Pages** del repository
-2. Imposta **Source** su branch `main`, cartella `/ (root)`
-3. Attendi il deploy (1–2 minuti)
-4. Apri l'URL generato (es. `https://tuonome.github.io/print-queue/`) in Chrome
-5. Menu ⋮ → **Aggiungi a schermata Home** / **Installa app**
+1. Open **Settings → Pages** on the repository
+2. Set **Source** to branch `main`, folder `/ (root)`
+3. Wait for deploy (1–2 minutes)
+4. Open the generated URL (e.g. `https://yourname.github.io/print-queue/`) in Chrome
+5. Menu ⋮ → **Add to Home screen** / **Install app**
 
-Per comparire nel foglio **Condividi** di Android, l’app deve essere installata così. Dopo un aggiornamento che aggiunge questa funzione, se Need For Print non compare in Condividi: rimuovi l’icona dalla home e reinstalla la PWA.
+To appear in Android’s **Share** sheet, install the app this way. After an update, if Need For Print is missing from Share: remove the home icon and install the PWA again.
 
-### Opzione B — File locale
+### Option B — Local files
 
-1. Scarica il progetto (Download workspace)
-2. Servi i file con un server HTTP locale (i moduli ES non funzionano aprendo `index.html` direttamente)
-3. Apri l'URL dal telefono sulla stessa rete, oppure usa un hosting statico
+1. Download the project (Download workspace)
+2. Serve files over HTTP (ES modules won’t work from `file://`)
+3. Open from your phone on the same network, or use static hosting
 
-## Uso
+## Usage
 
-1. Tocca **+** per aggiungere un link
-2. Incolla l'URL, inserisci il **titolo**, scegli un **colore** e opzionalmente i tag (scegli da quelli esistenti o scrivine di nuovi)
-3. Il modello compare nella lista **Da stampare**
-4. Dopo la stampa, tocca **○ Da stampare** per segnarlo come stampato
-5. Usa i filtri e i tag per trovare ciò che cerchi
-6. Tocca una card per aprire il modello nel browser
-7. Tocca l'icona in alto a destra su una card per **condividere** il link
+1. Tap **+** to add a link
+2. Paste the URL, enter a **title**, pick a **color**, and optional tags
+3. The model appears under **To print**
+4. After printing, tap **○ To print** to mark it printed
+5. Use filters and tags to find what you need
+6. Tap a card to open the model in the browser
+7. Tap the share icon on a card to share the link
 
 ## Backup
 
-- **↓** Esporta un file JSON con tutti i modelli
-- **↑** Importa un backup (sovrascrive la lista attuale)
+- **↓** Export a JSON file with all models
+- **↑** Import a backup (replaces the current list)
 
-## Note tecniche
+## Technical notes
 
-- Ogni card mostra il logo del sito di provenienza (funziona offline)
-- I dati restano solo sul telefono: non c'è account né cloud
+- Each card shows the source site icon (works offline)
+- Data stays on your phone only — no account or cloud sync
 
 ---
 

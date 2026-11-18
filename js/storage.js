@@ -17,7 +17,7 @@ export function createProject(data) {
   return {
     id: crypto.randomUUID(),
     url: data.url,
-    title: data.title || 'Senza titolo',
+    title: data.title || 'Untitled',
     image: data.image || '',
     source: data.source || 'unknown',
     color: data.color || '',
@@ -34,7 +34,7 @@ export function exportData() {
 
 export function importData(json) {
   const parsed = JSON.parse(json);
-  if (!Array.isArray(parsed)) throw new Error('Formato non valido');
+  if (!Array.isArray(parsed)) throw new Error('Invalid format');
   saveProjects(parsed);
   return parsed;
 }

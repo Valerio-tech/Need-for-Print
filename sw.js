@@ -1,8 +1,9 @@
-const CACHE = 'print-queue-v15';
+const CACHE = 'print-queue-v16';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './robots.txt',
   './css/app.css',
   './js/app.js',
   './js/storage.js',

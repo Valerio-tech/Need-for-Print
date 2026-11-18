@@ -90,12 +90,12 @@ const COLUMN_TO_FILTER = [
 ];
 
 export const PRIMARY_FILTER_META = [
-  { id: 'red', label: 'Rosso' },
-  { id: 'orange', label: 'Arancione' },
-  { id: 'yellow', label: 'Giallo' },
-  { id: 'green', label: 'Verde' },
-  { id: 'blue', label: 'Blu' },
-  { id: 'violet', label: 'Viola' },
+  { id: 'red', label: 'Red' },
+  { id: 'orange', label: 'Orange' },
+  { id: 'yellow', label: 'Yellow' },
+  { id: 'green', label: 'Green' },
+  { id: 'blue', label: 'Blue' },
+  { id: 'violet', label: 'Purple' },
 ];
 
 const FILTER_PRIMARY_COLUMN = {
@@ -170,10 +170,10 @@ export function normalizeFilterFamilyId(familyId) {
 }
 
 export const COLOR_FILTER_OPTIONS = [
-  { id: '', label: 'Tutti i colori', swatch: null },
-  { id: 'white', label: 'Bianco', swatch: GRAY_COLUMN[0] },
-  { id: 'gray', label: 'Grigio', swatch: '#808080' },
-  { id: 'black', label: 'Nero', swatch: GRAY_COLUMN[3] },
+  { id: '', label: 'All colors', swatch: null },
+  { id: 'white', label: 'White', swatch: GRAY_COLUMN[0] },
+  { id: 'gray', label: 'Gray', swatch: '#808080' },
+  { id: 'black', label: 'Black', swatch: GRAY_COLUMN[3] },
   ...PRIMARY_FILTER_META.map((meta) => ({
     id: meta.id,
     label: meta.label,
@@ -183,7 +183,7 @@ export const COLOR_FILTER_OPTIONS = [
 
 export function getColorFilterLabel(familyId) {
   const id = normalizeFilterFamilyId(familyId);
-  if (!id) return 'Tutti i colori';
+  if (!id) return 'All colors';
   const opt = COLOR_FILTER_OPTIONS.find((o) => o.id === id);
-  return opt ? opt.label : 'Tutti i colori';
+  return opt ? opt.label : 'All colors';
 }

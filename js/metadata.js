@@ -25,7 +25,7 @@ const SOURCE_ICONS = {
 
 export function detectSource(url) {
   const site = SITES.find((s) => s.pattern.test(url));
-  return site ? { id: site.id, name: site.name } : { id: 'other', name: 'Altro' };
+  return site ? { id: site.id, name: site.name } : { id: 'other', name: 'Other' };
 }
 
 export function getSourceIcon(sourceId) {

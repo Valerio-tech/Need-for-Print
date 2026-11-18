@@ -220,7 +220,7 @@ async function handleAdd(e) {
   if (!url) return;
 
   if (!title) {
-    showAddStatus('Inserisci un titolo', 'error');
+    showAddStatus('Enter a title', 'error');
     els.titleInput.focus();
     return;
   }
@@ -228,7 +228,7 @@ async function handleAdd(e) {
   try {
     new URL(url);
   } catch {
-    showAddStatus('URL non valido', 'error');
+    showAddStatus('Invalid URL', 'error');
     return;
   }
 
@@ -377,10 +377,10 @@ function renderTagFilterDropdown() {
   updateSecondaryFiltersVisibility();
   if (projects.length === 0) return;
 
-  els.tagFilterLabel.textContent = activeTag || 'Tutti i tag';
+  els.tagFilterLabel.textContent = activeTag || 'All tags';
 
   const tags = getAllTags(projects);
-  const options = [{ tag: '', label: 'Tutti i tag' }, ...tags.map((tag) => ({ tag, label: tag }))];
+  const options = [{ tag: '', label: 'All tags' }, ...tags.map((tag) => ({ tag, label: tag }))];
 
   els.tagFilterOptions.innerHTML = options
     .map(
@@ -463,7 +463,7 @@ function renderCard(p) {
 
   return `
     <article class="card ${p.printed ? 'printed' : ''}" data-id="${p.id}"${cardStyle}>
-      <button type="button" class="card-share-btn" data-action="share" aria-label="Condividi link">
+      <button type="button" class="card-share-btn" data-action="share" aria-label="Share link">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="6" cy="12" r="2.25" stroke="currentColor" stroke-width="1.75"/>
           <circle cx="18" cy="6" r="2.25" stroke="currentColor" stroke-width="1.75"/>
@@ -483,10 +483,10 @@ function renderCard(p) {
         </div>
       </a>
       <div class="card-actions">
-        <button class="action-btn ${p.printed ? 'done' : ''}" data-action="toggle" aria-label="${p.printed ? 'Segna da stampare' : 'Segna stampato'}">
-          ${p.printed ? '✓ Stampato' : '○ Da stampare'}
+        <button class="action-btn ${p.printed ? 'done' : ''}" data-action="toggle" aria-label="${p.printed ? 'Mark as to print' : 'Mark as printed'}">
+          ${p.printed ? '✓ Printed' : '○ To print'}
         </button>
-        <button class="action-btn danger" data-action="delete" aria-label="Elimina">✕</button>
+        <button class="action-btn danger" data-action="delete" aria-label="Delete">✕</button>
       </div>
     </article>
   `;
@@ -505,7 +505,7 @@ function handleAction(id, action) {
     projects[idx].printed = !projects[idx].printed;
     projects[idx].printedAt = projects[idx].printed ? Date.now() : null;
   } else if (action === 'delete') {
-    if (!confirm('Eliminare questo modello?')) return;
+    if (!confirm('Delete this model?')) return;
     projects.splice(idx, 1);
   }
 
@@ -531,7 +531,7 @@ async function shareProject(project) {
 
   try {
     await navigator.clipboard.writeText(project.url);
-    showToast('Link copiato');
+    showToast('Link copied');
   } catch {
     showToast(project.url);
   }
@@ -562,11 +562,11 @@ function handleImport(e) {
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      if (!confirm('Importare sovrascrivendo la lista attuale?')) return;
+      if (!confirm('Import and replace your current list?')) return;
       projects = importData(reader.result);
       render();
     } catch {
-      alert('File non valido');
+      alert('Invalid file');
     }
   };
   reader.readAsText(file);

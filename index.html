@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#1a73e8">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,10 +33,10 @@
         <p class="app-subtitle">https://valerio-tech.github.io/print-queue/</p>
       </div>
       <div class="header-actions">
-        <button id="export-btn" class="icon-btn" title="Esporta backup" aria-label="Esporta">↓</button>
-        <button id="import-btn" class="icon-btn" title="Importa backup" aria-label="Importa">↑</button>
-        <label class="theme-switch" title="Tema chiaro / scuro">
-          <input type="checkbox" id="theme-toggle" role="switch" aria-label="Tema chiaro o scuro">
+        <button id="export-btn" class="icon-btn" title="Export backup" aria-label="Export">↓</button>
+        <button id="import-btn" class="icon-btn" title="Import backup" aria-label="Import">↑</button>
+        <label class="theme-switch" title="Light / dark theme">
+          <input type="checkbox" id="theme-toggle" role="switch" aria-label="Light or dark theme">
           <span class="theme-switch-track" aria-hidden="true">
             <span class="theme-switch-thumb"></span>
           </span>
@@ -44,21 +45,21 @@
       </div>
     </div>
     <div class="search-wrap">
-      <input type="search" id="search-input" placeholder="Cerca modelli…" autocomplete="off">
+      <input type="search" id="search-input" placeholder="Search models…" autocomplete="off">
     </div>
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="todo">Da stampare (<span id="count-todo">0</span>)</button>
-      <button class="filter-btn" data-filter="done">Stampati (<span id="count-done">0</span>)</button>
-      <button class="filter-btn" data-filter="all">Tutti</button>
+      <button class="filter-btn active" data-filter="todo">To print (<span id="count-todo">0</span>)</button>
+      <button class="filter-btn" data-filter="done">Printed (<span id="count-done">0</span>)</button>
+      <button class="filter-btn" data-filter="all">All</button>
     </div>
     <div id="secondary-filters-wrap" class="secondary-filters-wrap hidden">
       <div class="filter-dropdown-row">
         <div id="tag-filter-wrap" class="filter-dropdown-col tag-dropdown-wrap">
           <button type="button" id="tag-filter-btn" class="tag-filter-btn" aria-haspopup="listbox" aria-expanded="false">
-            <span id="tag-filter-label">Tutti i tag</span>
+            <span id="tag-filter-label">All tags</span>
             <span class="tag-filter-chevron" aria-hidden="true">▼</span>
           </button>
-          <div id="tag-filter-menu" class="tag-dropdown-menu hidden" role="listbox" aria-label="Filtra per tag">
+          <div id="tag-filter-menu" class="tag-dropdown-menu hidden" role="listbox" aria-label="Filter by tag">
             <hr class="tag-dropdown-divider">
             <div id="tag-filter-options" class="tag-dropdown-options"></div>
             <hr class="tag-dropdown-divider">
@@ -68,11 +69,11 @@
           <button type="button" id="color-filter-btn" class="tag-filter-btn" aria-haspopup="listbox" aria-expanded="false">
             <span id="color-filter-label" class="color-filter-label-inner">
               <span class="color-filter-swatch hidden" id="color-filter-btn-swatch" aria-hidden="true"></span>
-              <span id="color-filter-label-text">Tutti i colori</span>
+              <span id="color-filter-label-text">All colors</span>
             </span>
             <span class="tag-filter-chevron" aria-hidden="true">▼</span>
           </button>
-          <div id="color-filter-menu" class="tag-dropdown-menu hidden" role="listbox" aria-label="Filtra per colore">
+          <div id="color-filter-menu" class="tag-dropdown-menu hidden" role="listbox" aria-label="Filter by color">
             <hr class="tag-dropdown-divider">
             <div id="color-filter-options" class="tag-dropdown-options"></div>
             <hr class="tag-dropdown-divider">
@@ -85,48 +86,48 @@
   <main class="main">
     <div id="empty-state" class="empty hidden">
       <div class="empty-icon">🖨️</div>
-      <p>Nessun modello ancora</p>
-      <p class="empty-hint">Tocca + per aggiungere un link da Printables, Thingiverse, MakerWorld, Thangs, Creality Cloud, Cults3D e altri</p>
+      <p>No models yet</p>
+      <p class="empty-hint">Tap + to add a link from Printables, Thingiverse, MakerWorld, Thangs, Creality Cloud, Cults3D, and more</p>
     </div>
     <div id="project-list" class="project-list"></div>
   </main>
 
-  <button id="fab-add" class="fab" aria-label="Aggiungi modello">+</button>
+  <button id="fab-add" class="fab" aria-label="Add model">+</button>
 
   <div id="overlay" class="overlay"></div>
 
   <section id="add-sheet" class="bottom-sheet">
     <div class="sheet-handle"></div>
     <div class="sheet-header">
-      <h2>Nuovo modello</h2>
-      <button id="close-add" class="icon-btn" aria-label="Chiudi">✕</button>
+      <h2>New model</h2>
+      <button id="close-add" class="icon-btn" aria-label="Close">✕</button>
     </div>
     <form id="add-form" class="add-form">
-      <label for="url-input">Link al modello</label>
+      <label for="url-input">Model link</label>
       <input type="url" id="url-input" placeholder="https://www.printables.com/model/…" required inputmode="url" autocomplete="off">
-      <label for="title-input">Titolo</label>
-      <input type="text" id="title-input" placeholder="Nome del modello nella lista" required autocomplete="off">
-      <label>Colore</label>
+      <label for="title-input">Title</label>
+      <input type="text" id="title-input" placeholder="Name shown in the list" required autocomplete="off">
+      <label>Color</label>
       <div id="color-picker" class="color-picker">
         <div class="color-preview-row">
           <div id="color-preview" class="color-preview-swatch" aria-hidden="true"></div>
           <span id="color-hex" class="color-hex">#F56666</span>
         </div>
-        <div id="color-grid" class="color-grid" role="listbox" aria-label="Scegli colore"></div>
+        <div id="color-grid" class="color-grid" role="listbox" aria-label="Choose color"></div>
       </div>
       <input type="hidden" id="color-input" value="#F56666">
-      <label for="tags-input">Tag (opzionale)</label>
+      <label for="tags-input">Tags (optional)</label>
       <div class="tag-input-wrap">
-        <input type="text" id="tags-input" placeholder="vase, regalo, decorazione" autocomplete="off">
-        <div id="tag-suggestions" class="tag-dropdown-menu hidden" role="listbox" aria-label="Tag esistenti">
+        <input type="text" id="tags-input" placeholder="vase, gift, decor" autocomplete="off">
+        <div id="tag-suggestions" class="tag-dropdown-menu hidden" role="listbox" aria-label="Existing tags">
           <hr class="tag-dropdown-divider">
           <div id="tag-suggestions-list" class="tag-dropdown-options"></div>
           <hr class="tag-dropdown-divider">
         </div>
       </div>
-      <p class="hint">Separa i tag con virgola, o scegli da quelli già usati</p>
+      <p class="hint">Separate tags with commas, or pick from ones you already use</p>
       <p id="add-status" class="add-status"></p>
-      <button type="submit" id="add-btn" class="btn-primary">Salva</button>
+      <button type="submit" id="add-btn" class="btn-primary">Save</button>
     </form>
   </section>
 
