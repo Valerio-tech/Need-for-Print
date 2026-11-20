@@ -56,7 +56,3 @@ To appear in Android’s **Share** sheet, install the app this way. After an upd
 
 - Each card shows the source site icon (works offline)
 - Data stays on your phone only — no account or cloud sync
-
----
-
-Built with [BrainDaemon](https://braindaemon.com)
